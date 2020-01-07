@@ -1,0 +1,100 @@
+/******/ (function(modules) { // webpackBootstrap
+/******/ 	// The module cache
+/******/ 	var installedModules = {};
+/******/
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/
+/******/ 		// Check if module is in cache
+/******/ 		if(installedModules[moduleId]) {
+/******/ 			return installedModules[moduleId].exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = installedModules[moduleId] = {
+/******/ 			i: moduleId,
+/******/ 			l: false,
+/******/ 			exports: {}
+/******/ 		};
+/******/
+/******/ 		// Execute the module function
+/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+/******/
+/******/ 		// Flag the module as loaded
+/******/ 		module.l = true;
+/******/
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/
+/******/
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = modules;
+/******/
+/******/ 	// expose the module cache
+/******/ 	__webpack_require__.c = installedModules;
+/******/
+/******/ 	// define getter function for harmony exports
+/******/ 	__webpack_require__.d = function(exports, name, getter) {
+/******/ 		if(!__webpack_require__.o(exports, name)) {
+/******/ 			Object.defineProperty(exports, name, { enumerable: true, get: getter });
+/******/ 		}
+/******/ 	};
+/******/
+/******/ 	// define __esModule on exports
+/******/ 	__webpack_require__.r = function(exports) {
+/******/ 		if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
+/******/ 			Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
+/******/ 		}
+/******/ 		Object.defineProperty(exports, '__esModule', { value: true });
+/******/ 	};
+/******/
+/******/ 	// create a fake namespace object
+/******/ 	// mode & 1: value is a module id, require it
+/******/ 	// mode & 2: merge all properties of value into the ns
+/******/ 	// mode & 4: return value when already ns object
+/******/ 	// mode & 8|1: behave like require
+/******/ 	__webpack_require__.t = function(value, mode) {
+/******/ 		if(mode & 1) value = __webpack_require__(value);
+/******/ 		if(mode & 8) return value;
+/******/ 		if((mode & 4) && typeof value === 'object' && value && value.__esModule) return value;
+/******/ 		var ns = Object.create(null);
+/******/ 		__webpack_require__.r(ns);
+/******/ 		Object.defineProperty(ns, 'default', { enumerable: true, value: value });
+/******/ 		if(mode & 2 && typeof value != 'string') for(var key in value) __webpack_require__.d(ns, key, function(key) { return value[key]; }.bind(null, key));
+/******/ 		return ns;
+/******/ 	};
+/******/
+/******/ 	// getDefaultExport function for compatibility with non-harmony modules
+/******/ 	__webpack_require__.n = function(module) {
+/******/ 		var getter = module && module.__esModule ?
+/******/ 			function getDefault() { return module['default']; } :
+/******/ 			function getModuleExports() { return module; };
+/******/ 		__webpack_require__.d(getter, 'a', getter);
+/******/ 		return getter;
+/******/ 	};
+/******/
+/******/ 	// Object.prototype.hasOwnProperty.call
+/******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
+/******/
+/******/ 	// __webpack_public_path__
+/******/ 	__webpack_require__.p = "";
+/******/
+/******/
+/******/ 	// Load entry module and return exports
+/******/ 	return __webpack_require__(__webpack_require__.s = "./src/js/app.js");
+/******/ })
+/************************************************************************/
+/******/ ({
+
+/***/ "./src/js/app.js":
+/*!***********************!*\
+  !*** ./src/js/app.js ***!
+  \***********************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+eval("function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError(\"Cannot call a class as a function\"); } }\n\n// Aren Atlas İçin! //\nvar StorageController = function () {\n  return {\n    storeQuestion: function storeQuestion(question) {\n      var questions;\n\n      if (localStorage.getItem('questions') === null) {\n        questions = [];\n        questions.push(question);\n      } else {\n        questions = JSON.parse(localStorage.getItem('questions'));\n        questions.push(question);\n      }\n\n      localStorage.setItem('questions', JSON.stringify(questions));\n    },\n    getQuestions: function getQuestions() {\n      var questions;\n\n      if (localStorage.getItem('questions') === null) {\n        questions = [];\n      } else {\n        questions = JSON.parse(localStorage.getItem('questions'));\n      }\n\n      return questions;\n    },\n    deleteQuestion: function deleteQuestion(id) {\n      var questions = JSON.parse(localStorage.getItem('questions'));\n      questions.forEach(function (q, index) {\n        if (q.id == id) {\n          questions.splice(index, 1);\n        }\n      });\n      localStorage.setItem('questions', JSON.stringify(questions));\n    },\n    updateQuestion: function updateQuestion(question) {\n      var questions = JSON.parse(localStorage.getItem('questions'));\n      questions.forEach(function (q, index) {\n        if (question.id == q.id) {\n          questions.splice(index, 1, question);\n        }\n      });\n      localStorage.setItem('questions', JSON.stringify(questions));\n    }\n  };\n}();\n\nvar QuestionController = function () {\n  var Question = function Question(id, question, choices, answer) {\n    _classCallCheck(this, Question);\n\n    this.id = id;\n    this.question = question;\n    this.choices = choices;\n    this.answer = answer;\n  };\n\n  var data = {\n    questions: StorageController.getQuestions(),\n    selectedQuestion: null,\n    selectedChoice: null,\n    correctAnswer: null,\n    selectedID: null\n  };\n  return {\n    getQuestions: function getQuestions() {\n      return data.questions;\n    },\n    getData: function getData() {\n      return data;\n    },\n    getQuestionByID: function getQuestionByID(id) {\n      var question = null;\n      data.questions.forEach(function (q) {\n        if (q.id == id) {\n          question = q;\n        }\n      });\n      return question;\n    },\n    setCurrentQuestion: function setCurrentQuestion(question) {\n      data.selectedQuestion = question;\n    },\n    getCurrentQuestion: function getCurrentQuestion() {\n      return data.selectedQuestion;\n    },\n    addQuestion: function addQuestion(question, choices, answer) {\n      var id;\n\n      if (data.questions.length > 0) {\n        id = data.questions[data.questions.length - 1].id + 1;\n      } else {\n        id = 0;\n      }\n\n      var newQuestion = new Question(id, question, choices, answer);\n      data.questions.push(newQuestion);\n      data.selectedChoice = null;\n      return newQuestion;\n    },\n    updateQuestion: function updateQuestion(id, question, choices, answer) {\n      var quest = null;\n      data.questions.forEach(function (q) {\n        if (q.id == id) {\n          q.question = question;\n          q.choices = choices;\n          q.answer = answer;\n          quest = q;\n        }\n      });\n      return quest;\n    },\n    setCorrectAnswer: function setCorrectAnswer(answer) {\n      if (answer) {\n        data.correctAnswer = answer;\n      }\n    },\n    getCorrectAnswer: function getCorrectAnswer() {\n      return data.correctAnswer;\n    },\n    deletCorrectAnswer: function deletCorrectAnswer() {\n      data.correctAnswer = null;\n    },\n    setSelectedId: function setSelectedId(id) {\n      data.selectedID = id;\n    },\n    getSelectedId: function getSelectedId() {\n      return data.selectedID;\n    },\n    deleteQuestions: function deleteQuestions(question) {\n      data.questions.forEach(function (q, index) {\n        if (q.id == question.id) {\n          data.questions.splice(index, 1);\n        }\n      });\n    }\n  };\n}();\n\nvar UIController = function () {\n  var Selectors = {\n    listTable: document.querySelector('#qtable'),\n    questionInput: document.querySelector('#qtextinput'),\n    choiceInputA: document.querySelector('#choicea'),\n    choiceInputB: document.querySelector('#choiceb'),\n    choiceInputC: document.querySelector('#choicec'),\n    choiceInputD: document.querySelector('#choiced'),\n    answerRadio: document.querySelector('.answertr'),\n    addButton: document.querySelector('#eklebtn'),\n    cancelButton: document.querySelector('#cancelbtn'),\n    deleteButton: document.querySelector('#deletebtn'),\n    updateButton: document.querySelector('#updatebtn'),\n    editingBtnSet: document.querySelector('.editing'),\n    radioButtons: document.querySelectorAll('.radio'),\n    tableHead: document.querySelector('.tablehead'),\n    alertWindow: document.querySelector('#alert'),\n    alertMessage: document.querySelector('#message'),\n    startBtn: document.querySelector('#start')\n  };\n  var SelectUiItem = {\n    listitem: null\n  };\n  return {\n    createQuestionList: function createQuestionList(questions) {\n      var html = '';\n      questions.forEach(function (prd) {\n        html += \"                <tr class=\\\"listitem\\\">\\n                <td data-label=\\\"Soru No\\\">\".concat(prd.id + 1, \"</td>\\n                    <td data-label=\\\"Soru\\\">\").concat(prd.question, \"</td>\\n                    <td data-label=\\\"A\\\">\").concat(prd.choices[0], \"</td>\\n                    <td data-label=\\\"A\\\">\").concat(prd.choices[1], \"</td>\\n                    <td data-label=\\\"A\\\">\").concat(prd.choices[2], \"</td>\\n                    <td data-label=\\\"A\\\">\").concat(prd.choices[3], \"</td>\\n                  </tr>\");\n      });\n      Selectors.listTable.innerHTML = html;\n    },\n    getSelectors: function getSelectors() {\n      return Selectors;\n    },\n    addQuestion: function addQuestion(question) {\n      var html = \"                <tr class=\\\"listitem\\\">\\n            <td data-label=\\\"Soru No\\\">\".concat(question.id + 1, \"</td>\\n                <td data-label=\\\"Soru\\\">\").concat(question.question, \"</td>\\n                <td data-label=\\\"A\\\">\").concat(question.choices[0], \"</td>\\n                <td data-label=\\\"A\\\">\").concat(question.choices[1], \"</td>\\n                <td data-label=\\\"A\\\">\").concat(question.choices[2], \"</td>\\n                <td data-label=\\\"A\\\">\").concat(question.choices[3], \"</td>\\n              </tr>\");\n      Selectors.listTable.innerHTML += html;\n    },\n    setSelectListItem: function setSelectListItem(item) {\n      SelectUiItem.listitem = item;\n    },\n    getSelectListItem: function getSelectListItem() {\n      return SelectUiItem.listitem;\n    },\n    //Düzeltilecek.\n    updateQuestion: function updateQuestion(question) {\n      var updatedItem = question;\n      SelectUiItem.listitem.childNodes[1].textContent = question.id + 1;\n      SelectUiItem.listitem.childNodes[3].textContent = question.question;\n      SelectUiItem.listitem.childNodes[5].textContent = question.choices[0];\n      SelectUiItem.listitem.childNodes[7].textContent = question.choices[1];\n      SelectUiItem.listitem.childNodes[9].textContent = question.choices[2];\n      SelectUiItem.listitem.childNodes[11].textContent = question.choices[3];\n      return updatedItem;\n    },\n    deleteQuestion: function deleteQuestion() {\n      var items = SelectUiItem.listitem;\n      items.remove();\n    },\n    clearInputs: function clearInputs() {\n      Selectors.questionInput.value = '';\n      Selectors.choiceInputA.value = '';\n      Selectors.choiceInputB.value = '';\n      Selectors.choiceInputC.value = '';\n      Selectors.choiceInputD.value = '';\n      Selectors.radioButtons.forEach(function (btn) {\n        btn.checked = false;\n      });\n    },\n    //Düzenleme denenebilir.\n    addQuestionToForm: function addQuestionToForm(answer) {\n      Selectors.questionInput.value = SelectUiItem.listitem.childNodes[3].textContent;\n      Selectors.choiceInputA.value = SelectUiItem.listitem.childNodes[5].textContent;\n      Selectors.choiceInputB.value = SelectUiItem.listitem.childNodes[7].textContent;\n      Selectors.choiceInputC.value = SelectUiItem.listitem.childNodes[9].textContent;\n      Selectors.choiceInputD.value = SelectUiItem.listitem.childNodes[11].textContent;\n\n      if (answer == 'a') {\n        Selectors.radioButtons[0].checked = true;\n      } else if (answer == 'b') {\n        Selectors.radioButtons[1].checked = true;\n      } else if (answer == 'c') {\n        Selectors.radioButtons[2].checked = true;\n      } else {\n        Selectors.radioButtons[3].checked = true;\n      }\n    },\n    addingState: function addingState() {\n      SelectUiItem.listitem.classList.add('red');\n      Selectors.editingBtnSet.style.display = 'block';\n      Selectors.addButton.style.display = 'none';\n    },\n    editCancelState: function editCancelState() {\n      var listItems = Selectors.listTable.children;\n\n      for (var i = 0; i < listItems.length; i++) {\n        if (listItems[i].classList.contains('red')) {\n          listItems[i].classList.remove('red');\n        }\n      }\n\n      Selectors.editingBtnSet.style.display = 'none';\n      Selectors.addButton.style.display = 'inline';\n    },\n    showTableHead: function showTableHead() {\n      var elements = QuestionController.getData().questions;\n\n      if (elements.length == 0) {\n        Selectors.tableHead.classList.add('hide');\n      } else {\n        Selectors.tableHead.classList.remove('hide');\n      }\n    },\n    showAlert: function showAlert(message, className) {\n      var alert = Selectors.alertWindow;\n      var messageBox = Selectors.alertMessage;\n      alert.className = '';\n\n      if (className === 'warning') {\n        alert.classList.add('warning');\n        alert.classList.remove('hide');\n        messageBox.innerHTML = message + \"<i class=\\\"fas fa-exclamation-triangle\\\"></i>\";\n      } else if (className === 'success') {\n        alert.classList.add('success');\n        alert.classList.remove('hide');\n        messageBox.innerHTML = message + \"<i class=\\\"fas fa-check-double\\\"></i>\";\n      } else {\n        alert.classList.add('danger');\n        alert.classList.remove('hide');\n        messageBox.innerHTML = message + \"<i class=\\\"fas fa-exclamation\\\"></i>\";\n      }\n\n      setTimeout(function () {\n        alert.className = 'hide';\n      }, 3000);\n    }\n  };\n}();\n\nvar TestController = function () {}();\n\nvar AppController = function (QuestionCtrl, UICtrl, StorageCtrl) {\n  var UISelectors = UIController.getSelectors(); //Load Event Handled\n\n  var loadEventListeners = function loadEventListeners() {\n    UISelectors.answerRadio.addEventListener('click', setCorrectAnswerRadio);\n    UISelectors.addButton.addEventListener('click', addQuestionSubmit);\n    UISelectors.listTable.addEventListener('click', questionEditClick);\n    UISelectors.cancelButton.addEventListener('click', questionEditCancelSubmit);\n    UISelectors.updateButton.addEventListener('click', updateQuestionSubmit);\n    UISelectors.deleteButton.addEventListener('click', deleteQuestionSubmit);\n  };\n\n  var setCorrectAnswerRadio = function setCorrectAnswerRadio(e) {\n    var answer = null;\n\n    if (e.target.value == 'a' || e.target.value == 'b' || e.target.value == 'c' || e.target.value == 'd') {\n      answer = e.target.value;\n      QuestionCtrl.setCorrectAnswer(answer);\n    } //e.preventDefault();\n\n  };\n\n  var addQuestionSubmit = function addQuestionSubmit(e) {\n    var answers = [];\n    var qtext = UISelectors.questionInput.value;\n    var choicea = UISelectors.choiceInputA.value;\n    var choiceb = UISelectors.choiceInputB.value;\n    var choicec = UISelectors.choiceInputC.value;\n    var choiced = UISelectors.choiceInputD.value;\n    var answer = QuestionController.getCorrectAnswer();\n    console.log(answer);\n\n    if (qtext === null || qtext == '' || choicea === null || choicea == '' || choiceb === null || choiceb == '' || choicec === null || choicec == '' || choiced === null || choiced == '' || answer === null || answer == undefined) {\n      UICtrl.showAlert('Lütfen formu kontrol ediniz. Tüm bölümleri eksiksiz doldurunuz.', 'danger');\n    } else {\n      answers.push(choicea, choiceb, choicec, choiced);\n      var newQuestion = QuestionCtrl.addQuestion(qtext, answers, answer);\n      UICtrl.addQuestion(newQuestion);\n      StorageCtrl.storeQuestion(newQuestion);\n      UICtrl.showTableHead();\n      UICtrl.clearInputs();\n      QuestionCtrl.deletCorrectAnswer();\n      UICtrl.showAlert('Sorunuz sisteme başarıyla kaydedildi. Soru listesinden inceleyebilirsiniz.', 'success');\n    }\n\n    e.preventDefault();\n  };\n\n  var questionEditClick = function questionEditClick(e) {\n    UICtrl.showAlert('Sorunuz forma yüklendi gerekli düzenlemeleri yapabilirsiniz.', 'danger');\n    UICtrl.showTableHead();\n    UICtrl.clearInputs();\n    UICtrl.editCancelState();\n\n    if (e.target.parentElement.classList.contains('listitem')) {\n      var listitem = e.target.parentNode;\n      UICtrl.setSelectListItem(listitem);\n      UICtrl.addingState();\n      var id = parseInt(listitem.childNodes[1].textContent) - 1;\n      var question = QuestionCtrl.getQuestionByID(id);\n      QuestionCtrl.setCurrentQuestion(question);\n      QuestionCtrl.setSelectedId(id);\n      UICtrl.addQuestionToForm(question.answer);\n    }\n\n    e.preventDefault();\n  };\n\n  var questionEditCancelSubmit = function questionEditCancelSubmit(e) {\n    UICtrl.showAlert('Form temizlendi işlem iptal edildi.', 'danger');\n    UICtrl.showTableHead();\n    UICtrl.clearInputs();\n    UICtrl.editCancelState();\n    e.preventDefault();\n  };\n\n  var updateQuestionSubmit = function updateQuestionSubmit(e) {\n    var answers = [];\n    var qtext = UISelectors.questionInput.value;\n    var choicea = UISelectors.choiceInputA.value;\n    var choiceb = UISelectors.choiceInputB.value;\n    var choicec = UISelectors.choiceInputC.value;\n    var choiced = UISelectors.choiceInputD.value;\n    var answer = QuestionController.getCorrectAnswer();\n    console.log(answer);\n\n    if (qtext === null || qtext == '' || choicea === null || choicea == '' || choiceb === null || choiceb == '' || choicec === null || choicec == '' || choiced === null || choiced == '' || answer === null || answer == undefined) {\n      UICtrl.showAlert('Lütfen formu kontrol ediniz. Tüm bölümleri eksiksiz doldurunuz.', 'danger');\n    } else {\n      answers.push(choicea, choiceb, choicec, choiced);\n      var id = QuestionCtrl.getSelectedId();\n      var updatedQuestion = QuestionCtrl.updateQuestion(id, qtext, answers, answer);\n      UICtrl.updateQuestion(updatedQuestion);\n      StorageCtrl.updateQuestion(updatedQuestion);\n      UICtrl.editCancelState();\n      UICtrl.showTableHead();\n      UICtrl.clearInputs();\n      UICtrl.showAlert('Sorunuz sisteme başarıyla kaydedildi. Soru listesinden inceleyebilirsiniz.', 'success');\n    }\n  };\n\n  var deleteQuestionSubmit = function deleteQuestionSubmit(e) {\n    var selectedQuestion = QuestionCtrl.getCurrentQuestion();\n    QuestionCtrl.deleteQuestions(selectedQuestion);\n    UICtrl.deleteQuestion();\n    StorageCtrl.deleteQuestion(selectedQuestion.id);\n    UICtrl.editCancelState();\n    UICtrl.clearInputs();\n    UICtrl.showAlert('Soru sistemden silindi.', 'warning');\n    e.preventDefault();\n  };\n\n  return {\n    init: function init() {\n      var questions = QuestionCtrl.getQuestions();\n      UICtrl.createQuestionList(questions);\n      UICtrl.showTableHead();\n      loadEventListeners();\n    }\n  };\n}(QuestionController, UIController, StorageController);\n\nAppController.init();\n\n//# sourceURL=webpack:///./src/js/app.js?");
+
+/***/ })
+
+/******/ });
