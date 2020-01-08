@@ -39,8 +39,6 @@ table {
   }
 }
 * {
-  /*font-family: 'Dosis', sans-serif;
-      font-family: 'Josefin Sans', sans-serif;*/
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -260,12 +258,6 @@ hr {
   border: 0.2rem solid #504658;
   color: greenyellow;
 }
-.hidden {
-  display: none;
-}
-#menu-hidden {
-  display: none;
-}
 .btntab {
   background-color: #ce2e6c;
   padding-left: 0.5rem;
@@ -280,10 +272,6 @@ hr {
     width: 100%;
     border-left: none;
     display: none;
-  }
-  #menu-hidden {
-    display: flex;
-    border-left: none;
   }
   .btntab.responsive:not(#menu-hidden) {
     display: block;
@@ -356,6 +344,7 @@ h3 {
 .qtext {
   text-align: left;
 }
+/* 992 px*/
 @media (max-width: 992px) {
   .choice {
     width: 49%;
@@ -380,9 +369,6 @@ h3 {
   }
   #qtext {
     font-size: 1.8rem;
-  }
-  .hidden {
-    display: none;
   }
 }
 @media (max-width: 660px) {

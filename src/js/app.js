@@ -142,6 +142,7 @@ const QuestionController = (function () {
 
 const UIController = (function () {
     const Selectors = {
+        responsiveMenuButton:document.querySelector('#responsivetab'),
         home:document.querySelector('#home'),
         quizTemplate: document.querySelector('#qtemp'),
         quizList:document.querySelector('#qlist'),
@@ -358,6 +359,21 @@ const UIController = (function () {
                 Selectors.quizAddList.classList.add('hide');
                 Selectors.quizTemplate.classList.remove('hide');
             }
+        },
+        responsiveController(){
+            let btntabs=Selectors.tabs.children;
+            let item;
+            
+            for(let i=0;i<btntabs.length;i++){
+                item=btntabs[i];
+                if(item.classList.contains('responsive')){
+                    item.classList.remove('responsive');
+                }
+                else if (item.classList.contains('btntab')){
+                    item.classList.add('responsive');
+                } 
+            }
+            
         }
     }
 
@@ -427,6 +443,7 @@ const AppController = (function (QuestionCtrl, UICtrl, StorageCtrl, TestCtrl) {
         UISelectors.choicebox.addEventListener('click', answerTestSubmit);
         UISelectors.quiz.addEventListener('click', refreshTestSubmit);
         UISelectors.tabs.addEventListener('click', tabsControlClick);
+        UISelectors.responsiveMenuButton.addEventListener('click', responsiveMenuClick);
     }
     const setCorrectAnswerRadio = function (e) {
         let answer = null;
@@ -587,7 +604,17 @@ const AppController = (function (QuestionCtrl, UICtrl, StorageCtrl, TestCtrl) {
         }
         e.preventDefault()
     }
-
+    const responsiveMenuClick = function(e){
+        UICtrl.responsiveController();
+        // console.log(this)
+        // if(this.classList.contains('res')){
+        //     console.log('responsive mod açık')
+        // } else {
+        //     UICtrl.responsiveController();
+        //     console.log('responsive mod kapalı')
+        // }
+        e.preventDefault();
+    }
 
 
     return {
