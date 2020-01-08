@@ -142,7 +142,10 @@ const QuestionController = (function () {
 
 const UIController = (function () {
     const Selectors = {
-
+        home:document.querySelector('#home'),
+        quizTemplate: document.querySelector('#qtemp'),
+        quizList:document.querySelector('#qlist'),
+        quizAddList:document.querySelector('#qadd'),
         listTable: document.querySelector('#qtable'),
         questionInput: document.querySelector('#qtextinput'),
         choiceInputA: document.querySelector('#choicea'),
@@ -166,7 +169,8 @@ const UIController = (function () {
         qtext: document.getElementById('qtext'),
         qnumber: document.getElementById('qnumber'),
         choicebox: document.getElementById('choicebox'),
-        choiceTexts: document.querySelectorAll('.ctext')
+        choiceTexts: document.querySelectorAll('.ctext'),
+        tabs: document.querySelector('#tabs')
 
 
 
@@ -261,9 +265,10 @@ const UIController = (function () {
         },
         addingState: function () {
 
-            SelectUiItem.listitem.classList.add('red')
+            SelectUiItem.listitem.classList.add('red');
             Selectors.editingBtnSet.style.display = 'block';
             Selectors.addButton.style.display = 'none';
+            Selectors.quizAddList.classList.remove('hide');
         },
         editCancelState: function () {
             let listItems = Selectors.listTable.children;
@@ -274,6 +279,7 @@ const UIController = (function () {
             }
             Selectors.editingBtnSet.style.display = 'none';
             Selectors.addButton.style.display = 'inline';
+            Selectors.quizAddList.classList.add('hide');
         },
         showTableHead: function () {
             let elements = QuestionController.getData().questions;
@@ -330,6 +336,28 @@ const UIController = (function () {
             Selectors.choiceTexts[2].textContent = question.choices[2];
             Selectors.choiceTexts[3].textContent = question.choices[3];
 
+        },
+        showTestResult(answers) {
+            Selectors.quiz.innerHTML = `<div id="finishtemplate"><P>Tebrikler testi tamamladınız.</P>
+        <br><p>Toplam Doğru =${answers[0]}</p>
+        <br><p>Toplam Yanlış = ${answers[1]}</p>
+        <br><button id="finish" class="btn finishbtn">Yenile</button></div>`;;
+        },
+        tabsController(state){
+            Selectors.home.classList.add('hide');
+            if (state == 'addquestion') {
+                Selectors.quizList.classList.add('hide');
+                Selectors.quizAddList.classList.remove('hide');
+                Selectors.quizTemplate.classList.add('hide');
+            } else if (state == 'questionlist') {
+                Selectors.quizList.classList.remove('hide');
+                Selectors.quizAddList.classList.add('hide');
+                Selectors.quizTemplate.classList.add('hide');
+            } else if (state == 'quiz') {
+                Selectors.quizList.classList.add('hide');
+                Selectors.quizAddList.classList.add('hide');
+                Selectors.quizTemplate.classList.remove('hide');
+            }
         }
     }
 
@@ -357,19 +385,29 @@ const TestController = (function () {
         },
         addChoiceToList(choice) {
             testData.userChoiceList.push(choice);
-           return console.log(testData.userChoiceList);
+
         },
-        testResult(questions){
-            let questionsAnswers =[];
-            questions.forEach((item,index)=>{
-                if(item.answer===testData.userChoiceList[index]){
+        testResult(questions) {
+            let dizi = [];
+            questions.forEach((item, index) => {
+                if (item.answer === testData.userChoiceList[index]) {
                     testData.rightAnswer++
-                }else {
-                     testData.wrongAnswer++
+                } else {
+                    testData.wrongAnswer++
                 }
-                  
+
             });
-           
+            dizi.push(testData.rightAnswer, testData.wrongAnswer)
+
+            return dizi;
+
+
+        },
+        getRightAnswer() {
+            return testData.rightAnswer;
+        },
+        getWrongAnswer() {
+            return testData.wrongAnswer;
         }
     }
 
@@ -387,6 +425,8 @@ const AppController = (function (QuestionCtrl, UICtrl, StorageCtrl, TestCtrl) {
         UISelectors.deleteButton.addEventListener('click', deleteQuestionSubmit);
         UISelectors.startBtn.addEventListener('click', startTestSubmit);
         UISelectors.choicebox.addEventListener('click', answerTestSubmit);
+        UISelectors.quiz.addEventListener('click', refreshTestSubmit);
+        UISelectors.tabs.addEventListener('click', tabsControlClick);
     }
     const setCorrectAnswerRadio = function (e) {
         let answer = null;
@@ -518,20 +558,34 @@ const AppController = (function (QuestionCtrl, UICtrl, StorageCtrl, TestCtrl) {
 
             if (questionIndex == questions.length - 1) {
                 UICtrl.cancelTestState();
-                UICtrl.showAlert('Testi başarıyla tamamladınız. Tebrikler', 'success')
-                TestCtrl.testResult(questions);
+                UICtrl.showAlert('Testi başarıyla tamamladınız. Tebrikler', 'success');
+                UICtrl.showTestResult(TestCtrl.testResult(questions));
 
             } else {
-                
+
                 TestCtrl.setTestCounter(questionIndex + 1);
                 UICtrl.showTest(questions[questionIndex + 1]);
-                UICtrl.startTestState();
+                UICtrl.startTestState(TestCtrl.getRightAnswer(), TestController.getWrongAnswer());
             }
 
-           
-
-
         }
+        e.preventDefault()
+    }
+    const refreshTestSubmit = function (e) {
+        if (e.target.classList.contains('finishbtn')) {
+            location.reload(false);
+        }
+        e.preventDefault()
+    }
+    const tabsControlClick = function (e) {
+        if (e.target.id == 'addquestion') {
+            UICtrl.tabsController(e.target.id)
+        } else if (e.target.id == 'questionlist') {
+            UICtrl.tabsController(e.target.id)
+        } else if (e.target.id == 'quiz') {
+            UICtrl.tabsController(e.target.id)
+        }
+        e.preventDefault()
     }
 
 

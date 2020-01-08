@@ -12,6 +12,7 @@
     <script src="https://code.jquery.com/jquery-3.2.1.js"
         integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="../dist/css/style.css">
+    <!-- <link rel="stylesheet" href="../src/css/style.css"> -->
 </head>
 
 <body>
@@ -32,9 +33,13 @@
                     id="trash">1</span></button>
         </div>
         <div id="tabscontent">
-            <div id="qtemp" class="temp">
+            <div id="home" class="temp">
+                <h2>Quiz Uygulamasına Hoşgeldiniz.</h2>
+                <h3>Uygulamamızı üstteki menü ile kullanabilirsiniz.</h3>
+            </div>
+            <section id="qtemp" class="temp hide">
                 <button id="start" class="btn startbtn">Start Quiz</button>
-
+               
                 <div id="quizz" class="hide">
                     <div id="qhead">
                         <div class="qtext"><span id="qnumber">1</span><br>
@@ -61,8 +66,8 @@
                         </div>
                     </div>
                 </div>
-            </div>
-            <div id="qlist" class="temp">
+            </section>
+            <section id="qlist" class="temp hide">
                 <table id="qlisttable">
                     <caption>Soru Listesi</caption>
                     <thead class='tablehead'>
@@ -80,8 +85,8 @@
                     </tbody>
                 </table>
 
-            </div>
-            <div id="qadd" class="temp">
+            </section>
+            <section  id="qadd" class="temp hide">
                 <h3>Soru Oluştur</h3>
 
                 <ul class="form-group">
@@ -126,13 +131,18 @@
                     </li>
                 </ul>
 
-            </div>
+            </section >
+            <footer id="footer" class="clearfix">
+                <p>Created by: <span style="font-size: 1rem;">Lanista Software</span></p>
+                <p>Contact information: <a href="mailto:bilgi@lanistasoftware.com">
+                    bilgi@lanistasoftware.com</a>.</p>
+              </footer>
 
         </div>
 
     </div>
-    <script src="../src/js/app.js"></script>
-    <!-- <script src="../dist/js/bundle.js"></script> -->
+    <!-- <script src="../src/js/app.js"></script> -->
+    <script src="../dist/js/bundle.js"></script>
     <script>
 
     </script>
