@@ -260,6 +260,7 @@ hr {
     padding:0.2rem 0.4rem;
     font-size: 1.8rem;
     margin-right: 0.4rem;
+    margin-top: 2rem;
 }
 
 .eklebtn:hover {
@@ -659,39 +660,7 @@ hr {
 
 }
 
-/* @media (max-width:660px) {
-    #qlisttable,
-    #qlisttable tr,
-    #qlisttable th,
-    #qlisttable td {
-        border: .5px solid @gri);
-        padding:0.1rem;
-    }
-    #qlisttable tr{
-        font-size: .8rem;
-        width: 50%;
-    } 
-    #qlisttable th{
-        font-size: 1.2rem;
-       
-    } 
-   #qlisttable{
-      max-width: 50%;
-   }
-     
-} */
-/* @media (max-width:380px) {
-   
-    #qlisttable tr{
-        font-size: .5rem;
-        width: 50%;
-    } 
-    #qlisttable th{
-        font-size: 1.2rem;
-       
-    } 
-     
-} */
+
 
 .listitem:hover {
 
@@ -711,12 +680,11 @@ hr {
 .element {
     width: 100%;
     padding: 0.2rem;
-}
+    div{
+        float: left;
+    }
+    }
 
-.choicetable {
-    width: 100%;
-    text-align: center;
-}
 
 .choicetr td {
     padding-right:0.2rem;
@@ -726,20 +694,43 @@ hr {
 }
 
 .choices {
-    width: 100%;
+   width: 96%;
     font-size: 1.2rem;
     color: @gri;
 }
 
 
-#qnumberinput {
-    width: 20%;
-}
 
 #qtextinput {
 
     width: 100%;
     height: 75px;
+}
+
+.answer-section{
+   display:inline-block;
+   width: 97%;
+   text-align: left;
+
+   h3 {
+       display: block;
+       text-align: left;
+       float: left;
+       padding-top: 0;
+      
+   }
+   input {
+       display: inline-block;
+       
+       text-align: center;
+   }
+
+
+   
+}
+.answer-radio{
+    text-align: right;
+    width: 3%;
 }
 /*Footer*/
 #footer{

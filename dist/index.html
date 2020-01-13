@@ -6,11 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Quiz Project</title>
-    <link href="https://fonts.googleapis.com/css?family=Dosis:400,500,600,700,800|Josefin+Sans:400,400i,600,600i,700,700i&display=swap&subset=latin-ext" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css?family=Dosis:400,500,600,700,800|Josefin+Sans:400,400i,600,600i,700,700i&display=swap&subset=latin-ext"
+        rel="stylesheet">
     <!-- <script src="https://code.jquery.com/jquery-3.2.1.js"
         integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script> -->
-    <link rel="stylesheet" href="../dist/css/style.css">
-    <!-- <link rel="stylesheet" href="../src/css/style.css"> -->
+    <!-- <link rel="stylesheet" href="../dist/css/style.css"> -->
+    <link rel="stylesheet" href="../src/css/style.css">
 </head>
 
 <body>
@@ -24,7 +26,7 @@
 
         <h1>Quiz & More</h1>
         <div id="tabs">
-            <button id="responsivetab" class="btn btntab"><i class="fas fa-bars"></i></button>            
+            <button id="responsivetab" class="btn btntab"><i class="fas fa-bars"></i></button>
             <button class="btn btntab" id="quiz">Quiz</button>
             <button class="btn btntab" id="questionlist">Question List</button>
             <button class="btn btntab" id="addquestion">Add Question</button>
@@ -38,7 +40,7 @@
             </div>
             <section id="qtemp" class="temp hide">
                 <button id="start" class="btn startbtn">Start Quiz</button>
-               
+
                 <div id="quizz" class="hide">
                     <div id="qhead">
                         <div class="qtext"><span id="qnumber">1</span><br>
@@ -85,10 +87,10 @@
                 </table>
 
             </section>
-            <section  id="qadd" class="temp hide">
+            <section id="qadd" class="temp hide">
                 <h3>Soru Oluştur</h3>
 
-                <ul class="form-group">
+                <ul class="form-group answertr">
                     <li class="element hide">
                         <label for="qnumberinput">Soru No</label>
                         <input name="qnumberinput" id="qnumberinput" type="text" disabled value="#">
@@ -96,41 +98,68 @@
                     <li class="element">
                         <input id="qtextinput" type="text" placeholder="Lütfen Sorunuzu Yazınız">
                     </li>
-                    <li class="element">
-                        <table class="choicetable">
 
-                            <tr class="choicetr">
-                                <td><input class="choices" id="choicea" name="choice" type="text"
-                                        placeholder="Lütfen şıkkı doldurunuz."></td>
-                                <td><input class="choices" id="choiceb" name="choice" type="text"
-                                        placeholder="Lütfen şıkkı doldurunuz."></td>
-                                <td><input class="choices" id="choicec" name="choice" type="text"
-                                        placeholder="Lütfen şıkkı doldurunuz."></td>
-                                <td><input class="choices" id="choiced" name="choice" type="text"
-                                        placeholder="Lütfen şıkkı doldurunuz."></td>
-                            </tr>
-                            <tr class="answertr">
-                                <td><input class="radio" type="radio" name="answer" value="a"> <label
-                                        for="answera">A</label></td>
-                                <td><input class="radio" type="radio" name="answer" value="b"><label
-                                        for="answerb">B</label></td>
-                                <td><input class="radio" type="radio" name="answer" value="c"><label
-                                        for="answerc">C</label></td>
-                                <td><input class="radio" type="radio" name="answer" value="d"><label
-                                        for="answerd">D</label></td>
-                            </tr>
-                        </table>
+                    <li class="element choicetable">
+                        
+                        <div class="answer-section choicetr">
+                            <label for="answera">A</label>
+                            <input class="choices" id="choicea" name="choice" type="text"
+                                placeholder="Lütfen şıkkı doldurunuz.">
+                        </div>
+                        <div class="answer-radio">
+                            <input class="radio" type="radio" name="answer" value="a"> 
+                        </div>
+                    </li>
+                    <li class="element choicetable">
+                        
+                        <div class="answer-section choicetr">
+                            <label for="answerb">B</label>
+                            <input class="choices" id="choiceb" name="choice" type="text"
+                                placeholder="Lütfen şıkkı doldurunuz.">
+                        </div>
+                        <div class="answer-radio">
+                            <input class="radio" type="radio" name="answer" value="b"> 
+                        </div>
+                    </li>
+                    <li class="element choicetable">
+                        
+                        <div class="answer-section choicetr">
+                            <label for="answerc">C</label>
+                            <input class="choices" id="choicec" name="choice" type="text"
+                                placeholder="Lütfen şıkkı doldurunuz.">
+                        </div>
+                        <div class="answer-radio">
+                            <input class="radio" type="radio" name="answer" value="c"> 
+                        </div>
+                    </li>
+                    <li class="element choicetable">
+                        
+                        <div class="answer-section choicetr">
+                            <label for="answera">D</label>
+                            <input class="choices" id="choiced" name="choice" type="text"
+                                placeholder="Lütfen şıkkı doldurunuz.">
+                        </div>
+                        <div class="answer-radio">
+                            <input class="radio" type="radio" name="answer" value="d"> 
+                        </div>
+                    </li>
 
                     <li class="element clearfix">
                         <div class="editing hide">
-                        <button id="deletebtn" type="button" class="btn eklebtn"><i style="color:maroon;font-weight: 700;" class="fas fa-trash-alt"></i> Sil</button>
-                        <button id="cancelbtn" type="button" class="btn eklebtn"><i style="color:indigo;font-weight: 700;" class="fas fa-window-close"></i> İptal</button>
-                        <button id="updatebtn" type="button" class="btn eklebtn"><i style="color:darkgoldenrod;font-weight: 700;" class="fas fa-edit"></i>Güncelle</button></div>
-                        <button id="eklebtn" type="button" class="btn eklebtn"><i style="color:yellowgreen;font-weight: 700;" class="far fa-save"></i> Ekle</button>
+                            <button id="deletebtn" type="button" class="btn eklebtn"><i
+                                    style="color:maroon;font-weight: 700;" class="fas fa-trash-alt"></i> Sil</button>
+                            <button id="cancelbtn" type="button" class="btn eklebtn"><i
+                                    style="color:indigo;font-weight: 700;" class="fas fa-window-close"></i>
+                                İptal</button>
+                            <button id="updatebtn" type="button" class="btn eklebtn"><i
+                                    style="color:darkgoldenrod;font-weight: 700;"
+                                    class="fas fa-edit"></i>Güncelle</button></div>
+                        <button id="eklebtn" type="button" class="btn eklebtn"><i
+                                style="color:yellowgreen;font-weight: 700;" class="far fa-save"></i> Ekle</button>
                     </li>
                 </ul>
 
-            </section >
+            </section>
 
 
         </div>
@@ -139,8 +168,8 @@
     <footer id="footer" class="clearfix">
         <p>Created by: <span style="font-size: 1rem;">Lanista Software</span></p>
         <p>Contact information: <a href="mailto:bilgi@lanistasoftware.com">
-            bilgi@lanistasoftware.com</a>.</p>
-      </footer>
+                bilgi@lanistasoftware.com</a>.</p>
+    </footer>
     <!-- <script src="../src/js/app.js"></script> -->
     <script src="../dist/js/bundle.js"></script>
 
