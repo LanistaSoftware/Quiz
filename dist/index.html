@@ -29,9 +29,9 @@
         <h1>Quiz & More</h1>
         <div id="tabs">
             <button id="responsivetab" class="btn btntab"><i class="fas fa-bars"></i></button>
-            <button class="btn btntab" id="quiz">Quiz</button>
-            <button class="btn btntab" id="questionlist">Question List</button>
-            <button class="btn btntab" id="addquestion">Add Question</button>
+            <button class="btn btntab" id="quiz"><i class="fas fa-question-circle"></i> Quiz</button>
+            <button class="btn btntab" id="questionlist"><i class="fas fa-list-ul"></i> Question List</button>
+            <button class="btn btntab" id="addquestion"><i class="fas fa-plus-square"></i> Add Question</button>
             <button class="btn btndelete hide" id="delete"><i class="fas fa-trash-alt"></i><span class="hide"
                     id="trash">1</span></button>
         </div>
@@ -41,7 +41,7 @@
                 <h3>Uygulamamızı üstteki menü ile kullanabilirsiniz.</h3>
             </div>
             <section id="qtemp" class="temp hide">
-                <button id="start" class="btn startbtn">Start Quiz</button>
+                <button id="start" class="btn startbtn"><i class="fas fa-chevron-circle-right"></i> Start Quiz</button>
 
                 <div id="quizz" class="hide">
                     <div id="qhead">
@@ -71,8 +71,10 @@
                 </div>
             </section>
             <section id="qlist" class="temp hide">
+
                 <table id="qlisttable">
-                    <caption>Soru Listesi</caption>
+        
+                    <caption><h3>Soru Listesi</h3></caption>
                     <thead class='tablehead'>
                         <tr>
                             <th scope="col">Soru No</th>
@@ -83,11 +85,12 @@
                             <th scope="col">D</th>
                         </tr>
                     </thead>
+                    
                     <tbody id="qtable">
-
+          
                     </tbody>
                 </table>
-
+                
             </section>
             <section id="qadd" class="temp hide">
                 <h3>Soru Oluştur</h3>
@@ -173,7 +176,7 @@
                 bilgi@lanistasoftware.com</a>.</p>
     </footer>
     <!-- <script src="../src/js/app.js"></script> -->
-    <script src="../dist/js/bundle.js"></script>
+    <script src="../src/js/app.js"></script>
 
     <script src="https://kit.fontawesome.com/acc38c63f4.js" crossorigin="anonymous"></script>
 </body>

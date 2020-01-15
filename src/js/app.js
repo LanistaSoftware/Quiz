@@ -182,6 +182,7 @@ const UIController = (function () {
 
     return {
         createQuestionList: function (questions) {
+            Selectors.listTable.innerHTML = " ";
             let html = ''
 
             questions.forEach(prd => {
@@ -204,6 +205,7 @@ const UIController = (function () {
             return Selectors;
         },
         addQuestion: function (question) {
+            Selectors.listTable.innerHTML = " ";
             var html = `                <tr class="listitem">
             <td data-label="Soru No">${question.id+1}</td>
                 <td data-label="Soru">${question.question}</td>
@@ -287,6 +289,15 @@ const UIController = (function () {
 
             if (elements.length == 0) {
                 Selectors.tableHead.classList.add('hide');
+                Selectors.listTable.innerHTML=`
+               
+                
+                <h3>Kayıtlı Soru Bulunmamaktadır.</h3>
+                <h4>Add Questions Bölümünden Ekleme Yapabilirsiniz.</h4>
+            
+
+         
+                `
             } else {
                 Selectors.tableHead.classList.remove('hide')
             }
@@ -342,7 +353,7 @@ const UIController = (function () {
             Selectors.quiz.innerHTML = `<div id="finishtemplate"><P>Tebrikler testi tamamladınız.</P>
         <br><p>Toplam Doğru =${answers[0]}</p>
         <br><p>Toplam Yanlış = ${answers[1]}</p>
-        <br><button id="finish" class="btn finishbtn">Yenile</button></div>`;;
+        <br><button id="finish" class="btn finishbtn"><i class="fas fa-redo-alt"></i> Yenile</button></div>`;;
         },
         tabsController(state){
             Selectors.home.classList.add('hide');
