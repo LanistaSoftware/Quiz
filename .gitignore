@@ -4,5 +4,4 @@ package.json
 node_modules/*
 .babelrc
 .vscode
-dist/css/style.less
 src/*
