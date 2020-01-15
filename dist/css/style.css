@@ -178,7 +178,6 @@ hr {
   padding: 0.2rem 0.4rem;
   font-size: 1.8rem;
   margin-right: 0.4rem;
-  margin-top: 2rem;
 }
 .eklebtn:hover {
   background-color: #ce2e6c;
@@ -482,6 +481,39 @@ h3 {
     border: none;
   }
 }
+/* @media (max-width:660px) {
+    #qlisttable,
+    #qlisttable tr,
+    #qlisttable th,
+    #qlisttable td {
+        border: .5px solid @gri);
+        padding:0.1rem;
+    }
+    #qlisttable tr{
+        font-size: .8rem;
+        width: 50%;
+    } 
+    #qlisttable th{
+        font-size: 1.2rem;
+       
+    } 
+   #qlisttable{
+      max-width: 50%;
+   }
+     
+} */
+/* @media (max-width:380px) {
+   
+    #qlisttable tr{
+        font-size: .5rem;
+        width: 50%;
+    } 
+    #qlisttable th{
+        font-size: 1.2rem;
+       
+    } 
+     
+} */
 .listitem:hover {
   background-color: #f0decb;
   color: #ce2e6c;
@@ -497,8 +529,9 @@ h3 {
   width: 100%;
   padding: 0.2rem;
 }
-.element div {
-  float: left;
+.choicetable {
+  width: 100%;
+  text-align: center;
 }
 .choicetr td {
   padding-right: 0.2rem;
@@ -507,32 +540,16 @@ h3 {
   font-weight: 600;
 }
 .choices {
-  width: 96%;
+  width: 100%;
   font-size: 1.2rem;
   color: #504658;
+}
+#qnumberinput {
+  width: 20%;
 }
 #qtextinput {
   width: 100%;
   height: 75px;
-}
-.answer-section {
-  display: inline-block;
-  width: 97%;
-  text-align: left;
-}
-.answer-section h3 {
-  display: block;
-  text-align: left;
-  float: left;
-  padding-top: 0;
-}
-.answer-section input {
-  display: inline-block;
-  text-align: center;
-}
-.answer-radio {
-  text-align: right;
-  width: 3%;
 }
 /*Footer*/
 #footer {

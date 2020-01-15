@@ -1,0 +1,239 @@
+@media (max-width: 1200px) {
+  .appbox {
+    max-width: 1140px;
+  }
+  html {
+    font-size: 10px;
+  }
+}
+@media (max-width: 992px) {
+  .appbox {
+    max-width: 960px;
+  }
+  html {
+    font-size: 8px;
+  }
+  /*alert*/
+  #alert {
+    width: 40%;
+    font-size: 1rem;
+    text-align: center;
+    left: 30%;
+  }
+  .startbtn,
+  .finishbtn {
+    width: 20%;
+    padding: 0.2rem 0.4rem;
+    transition: 0.4s;
+  }
+  .eklebtn {
+    padding: 0.1rem 0.2rem;
+  }
+  /*table item*/
+  .td-item {
+    display: flex;
+    padding: 1.5rem;
+  }
+  /*table*/
+  #qlisttable tr {
+    display: block;
+    margin-bottom: 1rem;
+  }
+  #qlisttable thead {
+    display: none;
+    border: none;
+  }
+  #qlisttable td {
+    display: block;
+    font-size: 2rem;
+    text-align: center;
+    margin: 0.5rem;
+    background-color: #ffb5b5;
+    border: none;
+  }
+  #qlisttable td::before {
+    content: attr(data-label);
+    float: left;
+    font-weight: bold;
+  }
+  #qlisttable td:last-child {
+    border-bottom: 0;
+  }
+  .tr-hidden:not(:first-child) {
+    display: none;
+  }
+  #qlisttable tr {
+    border: 0.2rem solid #504658;
+    padding: 0.2rem;
+    word-break: break-all;
+  }
+  #qlisttable td {
+    border-bottom: 0.1rem dotted #ce2e6c;
+    padding: 0.2rem;
+    word-break: break-all;
+  }
+}
+@media (max-width: 768px) {
+  .appbox {
+    max-width: 720px;
+  }
+  html {
+    font-size: 6px;
+  }
+  /*alert*/
+  #alert {
+    width: 40%;
+    font-size: 1rem;
+    text-align: center;
+    left: 21%;
+  }
+  /*responsive_menu */
+  #responsivetab {
+    display: inline;
+    border: none;
+    background-color: transparent;
+  }
+  #responsivetab i {
+    color: #ce2e6c;
+  }
+  .responsive {
+    text-align: center;
+    padding-bottom: 1rem;
+  }
+  .responsive i {
+    float: left;
+  }
+  .btntab:not(:first-child) {
+    width: 100%;
+    border-left: none;
+    display: none;
+  }
+  .responsive:not(:first-child) {
+    display: block;
+    letter-spacing: 0.2rem;
+    background-color: #ce2e6c;
+    border-bottom: 0.1rem solid #ffb5b5;
+    border-left: 0.1rem solid #ffb5b5;
+    color: #ffb5b5;
+    width: 30%;
+  }
+  .responsive:first-child {
+    background-color: #ce2e6c;
+    color: #ffb5b5;
+  }
+  #tabs {
+    position: absolute;
+  }
+}
+@media (max-width: 660px) {
+  .appbox {
+    max-width: 620px;
+  }
+  html {
+    font-size: 4px;
+  }
+  .btntab.responsive:not(#menu-hidden) {
+    display: block;
+    font-size: 1.2rem;
+    float: none;
+    padding: 0.5rem;
+    letter-spacing: 0.1rem;
+  }
+  .choice {
+    border: solid 0.2rem #ffb5b5;
+    cursor: pointer;
+    float: left;
+    width: 49%;
+    margin-right: 1%;
+    transition: 0.2s;
+  }
+  .choicetr {
+    width: 80%;
+    float: left;
+  }
+  .td-item {
+    display: flex;
+    padding: 0.6rem;
+    width: 100%;
+    float: right;
+  }
+  .ans {
+    display: none;
+  }
+  .radio {
+    margin-top: 0.3rem;
+  }
+  label {
+    float: left;
+  }
+  .choicetr {
+    border: none;
+  }
+  .startbtn,
+  .finishbtn {
+    width: 20%;
+    padding: 0.1rem 0.2rem;
+    font-size: 1rem;
+    transition: 0.4s;
+  }
+  .eklebtn {
+    padding: 0.1rem 0.1rem;
+    font-size: 1.2rem;
+  }
+  /*table responsive*/
+  #qlisttable tr {
+    display: block;
+    margin-bottom: 1rem;
+  }
+  #qlisttable thead {
+    display: none;
+    border: none;
+  }
+  #qlisttable td {
+    display: block;
+    font-size: 2rem;
+    text-align: center;
+    margin: 0.5rem;
+    background-color: #ffb5b5;
+    border: none;
+    border-bottom: 1px dotted #ce2e6c;
+    padding: 0.2rem;
+    word-break: break-all;
+  }
+  #qlisttable td::before {
+    content: attr(data-label);
+    float: left;
+    font-weight: bold;
+  }
+  #qlisttable td:last-child {
+    border-bottom: 0;
+  }
+  .tr-hidden:not(:first-child) {
+    display: none;
+  }
+  #qlisttable tr {
+    border: 0.2rem solid #504658;
+    padding: 0.2rem;
+    word-break: break-all;
+  }
+}
+@media (max-width: 420px) {
+  .appbox {
+    max-width: 400px;
+  }
+  html {
+    font-size: 3px;
+  }
+  .choice {
+    border: solid 0.2rem #ffb5b5;
+    cursor: pointer;
+    float: left;
+    width: 100%;
+    margin-right: 1%;
+    transition: 0.2s;
+    margin: 0.3rem;
+  }
+  label {
+    display: none;
+  }
+}
