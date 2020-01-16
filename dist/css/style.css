@@ -156,6 +156,9 @@ hr {
   box-shadow: 1rem 0.8rem 0.6rem #504658;
 }
 /* BUTTONS*/
+#responsivetab {
+  display: none;
+}
 .btn {
   font-size: 2.2rem;
   border-radius: 0.1rem;
@@ -183,6 +186,7 @@ hr {
   padding: 0.3rem 0.4rem;
   font-size: 1.3rem;
   margin-right: 0.4rem;
+  margin-top: 5rem;
 }
 .eklebtn:hover {
   background-color: #ce2e6c;
@@ -297,7 +301,7 @@ h3 {
 #qlisttable tr,
 #qlisttable th,
 #qlisttable td {
-  border: 0.1rem solid #504658;
+  border: 0.3rem solid #ce2e6c;
   padding: 0.2rem;
   word-break: break-all;
 }
@@ -323,7 +327,12 @@ h3 {
 }
 .choicetable {
   width: 100%;
-  text-align: center;
+  text-align: left;
+  padding: 2rem;
+}
+.choicetr {
+  width: 95%;
+  float: left;
 }
 .choicetr td {
   padding-right: 0.2rem;
@@ -332,9 +341,15 @@ h3 {
   font-weight: 600;
 }
 .choices {
-  width: 100%;
+  width: 95%;
   font-size: 1.2rem;
   color: #504658;
+}
+.answer-radio {
+  width: 3%;
+  float: left;
+  padding: 0.8rem;
+  text-align: left;
 }
 #qnumberinput {
   width: 20%;

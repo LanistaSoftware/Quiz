@@ -199,6 +199,9 @@ hr {
 }
 
 /* BUTTONS*/
+#responsivetab{
+    display:none;
+  }
 .btn {
     font-size: 2.2rem;
     border-radius:0.1rem;
@@ -232,6 +235,7 @@ hr {
     padding:0.3rem 0.4rem;
     font-size: 1.3rem;
     margin-right: 0.4rem;
+    margin-top: 5rem;
 }
 
 .eklebtn:hover {
@@ -275,9 +279,6 @@ hr {
     letter-spacing:0.2rem;
     padding: 1rem;
 }
-
-
-
 
 .btntab:hover {
 
@@ -392,7 +393,7 @@ hr {
 #qlisttable tr,
 #qlisttable th,
 #qlisttable td {
-    border: 0.1rem solid @gri;
+    border: 0.3rem solid @kpembe;
     padding:0.2rem;
     word-break: break-all;
 }
@@ -427,9 +428,13 @@ hr {
 
 .choicetable {
     width: 100%;
-    text-align: center;
+    text-align: left;
+    padding: 2rem;
 }
-
+.choicetr{
+    width: 95%;
+    float: left;
+}
 .choicetr td {
     padding-right:0.2rem;
     border: none;
@@ -438,11 +443,16 @@ hr {
 }
 
 .choices {
-    width: 100%;
+    width: 95%;
     font-size: 1.2rem;
     color: @gri;
 }
-
+.answer-radio{
+    width: 3%;
+    float: left;
+    padding: 0.8rem;
+    text-align: left;
+}
 
 #qnumberinput {
     width: 20%;
